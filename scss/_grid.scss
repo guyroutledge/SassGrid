@@ -1,0 +1,33 @@
+@mixin generate-grid($cols, $width, $gutters) {
+
+	$total: $cols * ($width + $gutters);
+	$margin: ($gutters / $total) * 100;
+	$negMargin: -$margin;
+
+	[class^="grid-"] {
+    	float:left;
+    	margin: 0 (1% * $margin) 0 0;
+	}
+
+	.grids {
+		clear:both;
+		width:auto;
+	    max-width:$total * 1px;
+	    margin:0 0 0 (1%*$negMargin);
+	    overflow:hidden; /* clear the floats */
+
+	    [class^="grid-"] {
+	        float:left;
+	        margin:0 0 0 (1% * $margin);
+	    }
+
+		.grid-1 {
+			width: ($width/$total) * 100%;
+		}
+		@for $i from 2 through $cols {
+		  .grid-#{$i} {
+		  	width: ((($width * $i) + ($gutters * ($i - 1)))/$total)*100%;
+		  }
+		}
+	}
+}

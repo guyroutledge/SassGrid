@@ -1,0 +1,49 @@
+@include generate-grid(16, 40, 20);
+
+* { margin:0; padding:0; }
+
+body {
+	max-width:960px;
+	margin:0 auto;
+	padding:20px;
+	p {
+		font:12px/18px;
+		text-align:left;
+	}
+	a {
+		color:#c44cbd;
+		&:hover {
+			color:#8f3d8a;
+		}
+	}
+}
+[class^=grid-] {
+	min-height:30px;
+	margin-bottom:2.0083%!important;
+	background:#eee;
+	text-align:center;
+	line-height:30px;
+	outline:1px solid #ccc;
+}
+.grids { margin-bottom:1.5em; }
+.intro {
+	padding:1em 0;
+	background:none;
+	outline:none;
+	h1 {
+		margin-bottom:1em;
+		font-size:30px;
+		text-align:left;
+	}
+	.code {
+		width:70%;
+		margin:10px 0;
+		padding:20px;
+		background:#ccc;
+		border-radius:10px;
+		border:1px solid #666;
+		font-size:16px;
+		text-align:left;
+	}
+}
+.example { margin-top:-1.5em; padding-top:1px;}

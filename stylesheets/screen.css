@@ -1,0 +1,155 @@
+/* line 7, ../scss/_grid.scss */
+[class^="grid-"] {
+  float: left;
+  margin: 0 2.083% 0 0;
+}
+
+/* line 12, ../scss/_grid.scss */
+.grids {
+  clear: both;
+  width: auto;
+  max-width: 960px;
+  margin: 0 0 0 -2.083%;
+  overflow: hidden;
+  /* clear the floats */
+}
+/* line 19, ../scss/_grid.scss */
+.grids [class^="grid-"] {
+  float: left;
+  margin: 0 0 0 2.083%;
+}
+/* line 24, ../scss/_grid.scss */
+.grids .grid-1 {
+  width: 4.167%;
+}
+/* line 28, ../scss/_grid.scss */
+.grids .grid-2 {
+  width: 10.417%;
+}
+/* line 28, ../scss/_grid.scss */
+.grids .grid-3 {
+  width: 16.667%;
+}
+/* line 28, ../scss/_grid.scss */
+.grids .grid-4 {
+  width: 22.917%;
+}
+/* line 28, ../scss/_grid.scss */
+.grids .grid-5 {
+  width: 29.167%;
+}
+/* line 28, ../scss/_grid.scss */
+.grids .grid-6 {
+  width: 35.417%;
+}
+/* line 28, ../scss/_grid.scss */
+.grids .grid-7 {
+  width: 41.667%;
+}
+/* line 28, ../scss/_grid.scss */
+.grids .grid-8 {
+  width: 47.917%;
+}
+/* line 28, ../scss/_grid.scss */
+.grids .grid-9 {
+  width: 54.167%;
+}
+/* line 28, ../scss/_grid.scss */
+.grids .grid-10 {
+  width: 60.417%;
+}
+/* line 28, ../scss/_grid.scss */
+.grids .grid-11 {
+  width: 66.667%;
+}
+/* line 28, ../scss/_grid.scss */
+.grids .grid-12 {
+  width: 72.917%;
+}
+/* line 28, ../scss/_grid.scss */
+.grids .grid-13 {
+  width: 79.167%;
+}
+/* line 28, ../scss/_grid.scss */
+.grids .grid-14 {
+  width: 85.417%;
+}
+/* line 28, ../scss/_grid.scss */
+.grids .grid-15 {
+  width: 91.667%;
+}
+/* line 28, ../scss/_grid.scss */
+.grids .grid-16 {
+  width: 97.917%;
+}
+
+/* line 3, ../scss/_styles.scss */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 5, ../scss/_styles.scss */
+body {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+/* line 9, ../scss/_styles.scss */
+body p {
+  font: 12px/18px;
+  text-align: left;
+}
+/* line 13, ../scss/_styles.scss */
+body a {
+  color: #c44cbd;
+}
+/* line 15, ../scss/_styles.scss */
+body a:hover {
+  color: #8f3d8a;
+}
+
+/* line 20, ../scss/_styles.scss */
+[class^=grid-] {
+  min-height: 30px;
+  margin-bottom: 2.0083%!important;
+  background: #eee;
+  text-align: center;
+  line-height: 30px;
+  outline: 1px solid #ccc;
+}
+
+/* line 28, ../scss/_styles.scss */
+.grids {
+  margin-bottom: 1.5em;
+}
+
+/* line 29, ../scss/_styles.scss */
+.intro {
+  padding: 1em 0;
+  background: none;
+  outline: none;
+}
+/* line 33, ../scss/_styles.scss */
+.intro h1 {
+  margin-bottom: 1em;
+  font-size: 30px;
+  text-align: left;
+}
+/* line 38, ../scss/_styles.scss */
+.intro .code {
+  width: 70%;
+  margin: 10px 0;
+  padding: 20px;
+  background: #ccc;
+  border-radius: 10px;
+  border: 1px solid #666;
+  font-size: 16px;
+  text-align: left;
+}
+
+/* line 49, ../scss/_styles.scss */
+.example {
+  margin-top: -1.5em;
+  padding-top: 1px;
+}
