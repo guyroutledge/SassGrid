@@ -1,22 +1,44 @@
-@include generate-grid(16, 40, 20);
+// This is the code that calls the Grid Generator to output the grids on the examples page
+
+@include generate-grid(12, 60, 20);
+@include generate-grid(16, 40, 20, grids-16, true);
+@include generate-grid(6, 150, 20, container, true, green);
+@include generate-grid(24, 15, 5, grids-wrapper, true, #F60);
+
+// Optionally you can set a max width on the grid container
+.grids { max-width:960px; }
+.grids-16 { max-width:960px; }
+.grid-container { max-width:1000px; }
+.grids-wrapper { max-width:480px; }
+
+
+// The following styles are for examples page only
 
 * { margin:0; padding:0; }
 
 body {
-	max-width:960px;
+	max-width:1000px;
 	margin:0 auto;
 	padding:20px;
-	p {
-		font:12px/18px;
-		text-align:left;
-	}
-	a {
-		color:#c44cbd;
-		&:hover {
-			color:#8f3d8a;
-		}
+}
+h1 { font-size:3em; }
+h2 { font-size:2em; }
+h3 { font-size:1.5em; }
+h1, h2, h3, h4 {
+	margin:0 0 1em;
+}
+p {
+	font:12px/18px;
+	text-align:left;
+	margin:0 0 1.5em;
+}
+a {
+	color:#4183C4;
+	&:hover {
+		text-decoration:underline;
 	}
 }
+
 [class^=grid-] {
 	min-height:30px;
 	margin-bottom:2.0083%!important;
@@ -30,20 +52,27 @@ body {
 	padding:1em 0;
 	background:none;
 	outline:none;
-	h1 {
-		margin-bottom:1em;
-		font-size:30px;
-		text-align:left;
-	}
-	.code {
-		width:70%;
-		margin:10px 0;
-		padding:20px;
-		background:#ccc;
-		border-radius:10px;
-		border:1px solid #666;
-		font-size:16px;
-		text-align:left;
+	ul {
+		margin:-1.5em 0 0 1.5em;
+		li { margin:-0.5em 0; }
 	}
 }
-.example { margin-top:-1.5em; padding-top:1px;}
+
+.code {
+	display:inline-block;
+	width:auto;
+	margin:0.5em 0;
+	padding:1em;
+	background:#F8F8F8;
+	border-radius:5px;
+	border:1px solid #ccc;
+	font-size:16px;
+	text-align:left;
+}
+span.code {
+	padding:0.25em;
+	margin-right:0.5em;
+	border-radius:3px;
+}
+
+.example { padding-top:1px; margin-bottom:1.5em; }
