@@ -1,28 +1,44 @@
-@mixin generate-grid($cols, $width, $gutters) {
-
-	$total: $cols * ($width + $gutters);
-	$margin: ($gutters / $total) * 100;
+@mixin generate-grid($_cols, $_width, $_gutters, $_grid_wrapper:grids, $_guides:false, $_color:red) {
+	$_total: $_cols * ($_width + $_gutters);
+	$_margin: ($_gutters / $_total) * 100;
 
 	[class^="grid-"] {
     	float:left;
-    	margin: 0 (1% * $margin) 0 0;
+    	margin: 0 (1% * $_margin) 0 0;
 	}
 
-	.grids {
+	.#{$_grid_wrapper} {
 		clear:both;
 		width:auto;
-	    margin:0 0 0 (-1%*$margin);
+	    margin:0 0 0 (-1%*$_margin);
 	    overflow:hidden; /* clear the floats */
 
-	    [class^="grid-"] {
+	    [class^=grid-] {
 	        float:left;
-	        margin:0 0 0 (1% * $margin);
+	        margin:0 0 0 (1% * $_margin);
 	    }
 
-		@for $i from 1 through $cols {
+		@for $i from 1 through $_cols {
 		  .grid-#{$i} {
-		  	width: ((($width * $i) + ($gutters * ($i - 1)))/$total)*100%;
+		  	width: ((($_width * $i) + ($_gutters * ($i - 1)))/$_total)*100%;
 		  }
+		}
+	}
+
+	@if $_guides == true {
+		$_guideWidth: ($_width + $_gutters) / $_total * 100;
+		$_stop: $_width / ($_width + $_gutters);
+		.#{$_grid_wrapper} {
+			position:relative;
+		}
+		.#{$_grid_wrapper}:after {
+			content: "";
+			position:absolute;
+			top:0; left:0; bottom:0; right:0;
+			@include background-image(linear-gradient(left, $_color 0, $_color $_stop, #fff $_stop, #fff 100%));
+		  	background-position:($_margin * 1%) 0;
+		  	background-size: ($_guideWidth * 1%) 100%;
+			opacity:0.1;
 		}
 	}
 }
