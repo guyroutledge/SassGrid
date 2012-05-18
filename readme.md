@@ -6,11 +6,9 @@ A fluid grid is a great starting point for building responsive websites but tran
 
 ## How does it work?
 
-Just add [scss/_grid.scss](these few lines of CSS) to a Compass/SASS project, call the mixin, compile your stylesheet and you're done. You only need to write 1 line of code and Compass does all the magic for you:
+Just add "scss/_grid.scss" to a Compass/SASS project, call the mixin, compile your stylesheet and you're done. You only need to write 1 line of code and Compass does all the magic for you:
 
-	<blockquote>
-		<p>@include generate-grid($_cols, $_width, $_gutters, [$_grid_wrapper], [$_guides], [$_color])</p>
-	</blockquote>
+	@include generate-grid($_cols, $_width, $_gutters, [$_grid_wrapper], [$_guides], [$_color])
 
 That's it. Simple.
 
@@ -18,18 +16,16 @@ That's it. Simple.
 
 Using some simple maths, compass generates your grid based on the arguments passed to the mixin. These arguments are as follows:
 
-	* 	`$_cols` number of columns
-	* 	`$_width` width of each $col in pixels
-	* 	`$_gutters` width between $cols in pixels
-	* 	`$_grids_wrapper` optional class name for grids container (default: grids)
-	* 	`$_guides` optionally show overlay guides (default: false)
-	* 	`$_color` color of guides (default: red)
+* `$_cols` number of columns
+* `$_width` width of each $col in pixels
+* `$_gutters` width between $cols in pixels
+* `$_grids_wrapper` optional class name for grids container (default: grids)
+* `$_guides` optionally show overlay guides (default: false)
+* `$_color` color of guides (default: red)
 
 You are probably familiar with the 960.gs grid which is traditionally a 12 or 16 column grid that totals 960px wide. This can easily be replicated using this grid generator (resize browser window to see it respond):
 
-		<<blockquote>
-			<p>@include generate-grid(12, 60, 20, true, blue)</p>
-		</blockquote>
+	@include generate-grid(12, 60, 20, true, blue)
 
 ## Where can I use it?
 
