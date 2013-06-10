@@ -3,25 +3,25 @@
 	$_margin: ($_gutters / $_total) * 100;
 
 	[class^="grid-"] {
-    	float:left;
-    	margin: 0 (1% * $_margin) 0 0;
+		float:left;
+		margin: 0 (1% * $_margin) 0 0;
 	}
 
 	.#{$_grid_wrapper} {
 		clear:both;
 		width:auto;
-	    margin:0 0 0 (-1%*$_margin);
-	    overflow:hidden; /* clear the floats */
+		margin:0 0 0 (-1%*$_margin);
+		overflow:hidden; /* clear the floats */
 
-	    [class^=grid-] {
-	        float:left;
-	        margin:0 0 0 (1% * $_margin);
-	    }
+		[class^=grid-] {
+			float:left;
+			margin:0 0 0 (1% * $_margin);
+		}
 
 		@for $i from 1 through $_cols {
-		  .grid-#{$i} {
-		  	width: ((($_width * $i) + ($_gutters * ($i - 1)))/$_total)*100%;
-		  }
+			.grid-#{$i} {
+				width: ((($_width * $i) + ($_gutters * ($i - 1)))/$_total)*100%;
+			}
 		}
 	}
 
@@ -36,8 +36,8 @@
 			position:absolute;
 			top:0; left:0; bottom:0; right:0;
 			@include background-image(linear-gradient(left, $_color 0, $_color $_stop, #fff $_stop, #fff 100%));
-		  	background-position:($_margin * 1%) 0;
-		  	background-size: ($_guideWidth * 1%) 100%;
+			background-position:($_margin * 1%) 0;
+			background-size: ($_guideWidth * 1%) 100%;
 			opacity:0.1;
 		}
 	}
