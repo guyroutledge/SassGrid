@@ -1,4 +1,20 @@
-@mixin generate-grid($_cols, $_width, $_gutters, $_grid_wrapper:grids, $_guides:false, $_color:red) {
+//*************************
+// $$ Grid
+//**************************
+
+// Micro clearfix by @necolas
+// http://nicolasgallagher.com/micro-clearfix-hack/
+// @extended in generate-grids() to ensure any grid container is clearfixed
+%clearfix:before,
+%clearfix:after {
+	content:" ";
+	display:table;
+}
+%clearfix:after {
+	clear:both;
+}
+
+@mixin generate-grid($_cols, $_width, $_gutters, $_grid_wrapper:grids) {
 	$_total: $_cols * ($_width + $_gutters);
 	$_margin: ($_gutters / $_total) * 100;
 
@@ -11,7 +27,7 @@
 		clear:both;
 		width:auto;
 		margin:0 0 0 (-1%*$_margin);
-		overflow:hidden; /* clear the floats */
+		@extend %clearfix;
 
 		[class^=grid-] {
 			float:left;
@@ -25,20 +41,4 @@
 		}
 	}
 
-	@if $_guides == true {
-		$_guideWidth: ($_width + $_gutters) / $_total * 100;
-		$_stop: $_width / ($_width + $_gutters);
-		.#{$_grid_wrapper} {
-			position:relative;
-		}
-		.#{$_grid_wrapper}:after {
-			content: "";
-			position:absolute;
-			top:0; left:0; bottom:0; right:0;
-			@include background-image(linear-gradient(left, $_color 0, $_color $_stop, #fff $_stop, #fff 100%));
-			background-position:($_margin * 1%) 0;
-			background-size: ($_guideWidth * 1%) 100%;
-			opacity:0.1;
-		}
-	}
 }
