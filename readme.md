@@ -8,7 +8,7 @@ A fluid grid is a great starting point for building responsive websites but tran
 
 Just add "scss/_grid.scss" to a Compass/SASS project, call the mixin, compile your stylesheet and you're done. You only need to write 1 line of code and Compass does all the magic for you:
 
-	@include generate-grid($_cols, $_width, $_gutters, [$_grid_wrapper], [$_guides], [$_color])
+	@include generate-grid($_cols, $_width, $_gutters, [$_grid_wrapper])
 
 That's it. Simple.
 
@@ -20,18 +20,14 @@ Using some simple maths, compass generates your grid based on the arguments pass
 * `$_width` width of each $col in pixels
 * `$_gutters` width between $cols in pixels
 * `$_grids_wrapper` optional class name for grids container (default: grids)
-* `$_guides` optionally show overlay guides (default: false)
-* `$_color` color of guides (default: red)
 
 You are probably familiar with the 960.gs grid which is traditionally a 12 or 16 column grid that totals 960px wide. This can easily be replicated using this grid generator (resize browser window to see it respond):
 
-	@include generate-grid(12, 60, 20, true, blue)
+	@include generate-grid(12, 60, 20)
 
 ## Where can I use it?
 
 Browser support for the Fluid Grid is IE7+ and all modern browsers.
-
-The overlay guides use CSS3 gradients so are not supported in IE9 but all modern browsers have you covered. These can be a bit flaky due to rounding of percentages but they're a good approximation of your grid at various screen sizes. From testing, Firefox seems to produce the most accurate results.
 
 ### License
 
