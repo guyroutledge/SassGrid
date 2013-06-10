@@ -1,9 +1,9 @@
 // This is the code that calls the Grid Generator to output the grids on the examples page
 
 @include generate-grid(12, 60, 20);
-@include generate-grid(16, 40, 20, grids-16, true);
-@include generate-grid(6, 150, 20, container, true, green);
-@include generate-grid(24, 15, 5, grids-wrapper, true, #F60);
+@include generate-grid(16, 40, 20, grids-16);
+@include generate-grid(6, 150, 20, container);
+@include generate-grid(24, 15, 5, grids-wrapper);
 
 // Optionally you can set a max width on the grid container
 .grids { max-width:960px; }
