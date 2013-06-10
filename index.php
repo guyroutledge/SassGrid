@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" href="../stylesheets/screen.css">
+	<link rel="stylesheet" href="../css/screen.css">
 </head>
 <body>
 <div class="intro">
