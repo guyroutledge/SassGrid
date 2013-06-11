@@ -18,24 +18,20 @@
 	$_total: $_cols * ($_width + $_gutters);
 	$_margin: ($_gutters / $_total) * 100;
 
-	[class^="grid-"] {
-		float:left;
-		margin: 0 (1% * $_margin) 0 0;
-	}
-
-	.#{$_grid_wrapper} {
+	%#{$_grid_wrapper} {
 		clear:both;
 		width:auto;
 		margin:0 0 0 (-1%*$_margin);
 		@extend %clearfix;
 
-		[class^=grid-] {
+		%_grid {
 			float:left;
 			margin:0 0 0 (1% * $_margin);
 		}
 
 		@for $i from 1 through $_cols {
-			.grid-#{$i} {
+			%grid-#{$i}-of-#{$_cols} {
+				@extend %_grid;
 				width: ((($_width * $i) + ($_gutters * ($i - 1)))/$_total)*100%;
 			}
 		}
