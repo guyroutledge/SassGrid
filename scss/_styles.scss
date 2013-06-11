@@ -73,6 +73,28 @@
 	}
 }
 
+.pushpull {
+	@extend %grids-24;
+	max-width:960px;
+}
+.push-12-of-24 {
+	@extend %grid-12-of-24;
+	@extend %push-12-of-24;
+}
+.pull-12-of-24 {
+	@extend %grid-12-of-24;
+	@extend %pull-12-of-24;
+}
+.push-16-of-24 {
+	@extend %grid-8-of-24;
+	@extend %push-16-of-24;
+}
+.pull-8-of-24 {
+	@extend %grid-16-of-24;
+	@extend %pull-8-of-24;
+}
+
+
 
 // The following styles are for examples page only
 
@@ -102,7 +124,9 @@ a {
 }
 
 [class^=grid-],
-[class^=homepage-] {
+[class^=homepage-],
+[class^=push-],
+[class^=pull-] {
 	min-height:30px;
 	margin-bottom:2.0083%!important;
 	background:#eee;
