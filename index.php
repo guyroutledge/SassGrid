@@ -158,5 +158,18 @@
 	</section>
 </div>
 
+<h3>Example of changing source order</h3>
+<p>Sometimes the most important content and visual layout don't match up
+but you can modify your grid by pushing (moving right) and pulling
+(moving left) your containers by <span class="code">@extend</span>ing them
+with selectors like <span class="code">%pull-8-of-24</span>.</p>
+
+<div class="pushpull example">
+	<div class="push-12-of-24">.push-12-of-24 (first in source order</div>
+	<div class="pull-12-of-24">.pull-12-of-24</div>
+	<div class="push-16-of-24">.push-16-of-24 (first in source order)</div>
+	<div class="pull-8-of-24">.pull-8-of-24</div>
+</div>
+
 </body>
 </html>
