@@ -73,6 +73,46 @@ properties of each grid unit.
 		// need to @extend grid-12-of-24.
 	}
 
+### You can also change the source order
+
+Sometimes the most important content and visual layout don't match up
+but you can modify your grid by pushing (moving right) and pulling
+(moving left) your containers by `@extend`ing them with selectors like
+`%pull-8-of-24`.
+
+
+	<!-- The HTML -->
+
+	<div class="pushpull example">
+		<div class="push-12-of-24">.push-12-of-24 (first in source order)</div>
+		<div class="pull-12-of-24">.pull-12-of-24</div>
+		<div class="push-16-of-24">.push-16-of-24 (first in source order)</div>
+		<div class="pull-8-of-24">.pull-8-of-24</div>
+	</div>
+
+	// The SCSS
+
+	.pushpull {
+		@extend %grids-24;
+		max-width:960px;
+	}
+	.push-12-of-24 {
+		@extend %grid-12-of-24;
+		@extend %push-12-of-24;
+	}
+	.pull-12-of-24 {
+		@extend %grid-12-of-24;
+		@extend %pull-12-of-24;
+	}
+	.push-16-of-24 {
+		@extend %grid-8-of-24;
+		@extend %push-16-of-24;
+	}
+	.pull-8-of-24 {
+		@extend %grid-16-of-24;
+		@extend %pull-8-of-24;
+	}
+
 ## Tell me more...
 
 Using some simple maths, compass generates your grid based on the arguments passed to the mixin. These arguments are as follows:
