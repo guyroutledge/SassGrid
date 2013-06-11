@@ -138,6 +138,7 @@ Just use it. Fork it, change it, copy it, distribute it, give it some love.
 
 #### 11 Jun 2013
 
+* Add ability to work around source order
 * Use SASS placeholders instead of classes
 
 #### 10 Jun 2013
