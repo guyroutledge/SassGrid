@@ -93,3 +93,19 @@ Browser support for the Fluid Grid is IE7+ and all modern browsers.
 ### License
 
 Just use it. Fork it, change it, copy it, distribute it, give it some love.
+
+### Changelog
+
+#### 11 Jun 2013
+
+* Use SASS placeholders instead of classes
+
+#### 10 Jun 2013
+
+* Use clearfix instead of `overflow:hidden`
+* Removed gradient overlays
+
+#### 13 May 2012
+
+* Initial version
+
