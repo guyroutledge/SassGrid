@@ -12,6 +12,67 @@ Just add "scss/_grid.scss" to a Compass/SASS project, call the mixin, compile yo
 
 That's it. Simple.
 
+## How do I use it?
+
+The generated CSS uses SASS silent placeholder classes which gives you
+the flexibility to name your grids with nice "human readable" class
+names and use the SASS `@extend` feature to allow them to inherit the
+properties of each grid unit.
+
+	// The SCSS
+
+	.homepage {
+		@extend %grids;
+	}
+	.homepage-feature {
+		@extend %grid-6-of-24; // 4 equal columns
+	}
+	.homepage-latest-post {
+		@extend %grid-12-of-24; // 2 equal columns
+	}
+
+	<!-- The HTML -->
+
+	<div class="homepage">
+		<div class="homepage-features">
+			<article class="homepage-feature"></article>
+			<article class="homepage-feature"></article>
+			<article class="homepage-feature"></article>
+			<article class="homepage-feature"></article>
+		</div>
+		<div class="homepage-latest-posts">
+			<article class="homepage-latest-post"></article>
+			<article class="homepage-latest-post"></article>
+		</div>
+	</div>
+
+### You can also do nested grids
+
+	<!-- The HTML -->
+	<div class="homepage-feature-products">
+	<section class="homepage-feature-products-container">
+		<article class="homepage-feature-product">.homepage-feature-product</article>
+		<article class="homepage-feature-product">.homepage-feature-product</article>
+		<article class="homepage-feature-product">.homepage-feature-product</article>
+		<article class="homepage-feature-product">.homepage-feature-product</article>
+	</section>
+	</div>
+
+	// The SCSS
+	.homepage-feature-products {
+		@extend %grid-12-of-24; // one of 2 equal columns
+	}
+	.homepage-feature-products-container {
+		@extend %grids; // nested grid container
+	}
+	.homepage-feature-product {
+		@extend %grid-12-of-24; // 2 equal columns inside nested grid
+		// as the grid uses percentages, each nested grid container
+		// becomes a grid of (for example) 24 columns which means to
+		// have a 2-column layout within a 2-column layout, you will
+		// need to @extend grid-12-of-24.
+	}
+
 ## Tell me more...
 
 Using some simple maths, compass generates your grid based on the arguments passed to the mixin. These arguments are as follows:

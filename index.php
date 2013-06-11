@@ -20,6 +20,70 @@
 
 	<p>That's it. Simple.</p>
 
+	<h2>How do I use it?</h2>
+
+	<p>The generated CSS uses SASS silent placeholder classes which gives you
+	the flexibility to name your grids with nice "human readable" class
+	names and use the SASS <span class="code">@extend</span> feature to allow them to inherit the
+	properties of each grid unit.</p>
+
+	<p><pre><code class="code">&lt;!-- The HTML --&gt;
+&lt;div class="homepage"&gt;
+  &lt;div class="homepage-features"&gt;
+    &lt;article class="homepage-feature"&gt;&lt;/article&gt;
+    &lt;article class="homepage-feature"&gt;&lt;/article&gt;
+    &lt;article class="homepage-feature"&gt;&lt;/article&gt;
+    &lt;article class="homepage-feature"&gt;&lt;/article&gt;
+  &lt;/div&gt;
+  &lt;div class="homepage-latest-posts"&gt;
+    &lt;article class="homepage-latest-post"&gt;&lt;/article&gt;
+    &lt;article class="homepage-latest-post"&gt;&lt;/article&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+// The SCSS
+.homepage {
+  @extend %grids;
+}
+.homepage-feature {
+  @extend %grid-6-of-24; // 4 equal columns
+}
+.homepage-latest-post {
+  @extend %grid-12-of-24; // 2 equal columns
+}
+
+</code></pre></p>
+
+	<h3>You can also do nested grids</h3>
+
+	<p><pre><code class="code">&lt;!-- The HTML --&gt;
+&lt;div class="homepage-feature-products"&gt;
+  &lt;section class="homepage-feature-products-container"&gt;
+    &lt;article class="homepage-feature-product"&gt;.homepage-feature-product&lt;/article&gt;
+    &lt;article class="homepage-feature-product"&gt;.homepage-feature-product&lt;/article&gt;
+    &lt;article class="homepage-feature-product"&gt;.homepage-feature-product&lt;/article&gt;
+    &lt;article class="homepage-feature-product"&gt;.homepage-feature-product&lt;/article&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+
+
+// The SCSS
+.homepage-feature-products {
+  @extend %grid-12-of-24; // one of 2 equal columns
+}
+.homepage-feature-products-container {
+  @extend %grids; // nested grid container
+}
+.homepage-feature-product {
+  @extend %grid-12-of-24; // 2 equal columns inside nested grid
+  // as the grid uses percentages, each nested grid container
+  // becomes a grid of (for example) 24 columns which means to
+  // have a 2-column layout within a 2-column layout, you will
+  // need to @extend grid-12-of-24.
+}
+	</code></pre></p>
+
 	<h2>Tell me more...</h2>
 
 	<p>Using some simple maths, compass generates your grid based on the arguments passed to the mixin. These arguments are as follows:</p>
@@ -46,75 +110,53 @@
 <h2>Examples</h2>
 
 <h3>960px 12-Column Fluid Grid with 20px Gutters</h3>
+<p>Uses generic container class and generic grid naming convention</p>
 <p><code class="code">@include generate-grid(12, 60, 20)</code></p>
 
 <div class="grids example">
-	<div class="grid-12">12</div>
-	<div class="grid-11">11</div><div class="grid-1">1</div>
-	<div class="grid-10">10</div><div class="grid-2">2</div>
-	<div class="grid-9">9</div><div class="grid-3">3</div>
-	<div class="grid-8">8</div><div class="grid-4">4</div>
-	<div class="grid-7">7</div><div class="grid-5">5</div>
-	<div class="grid-6">6</div><div class="grid-6">6</div>
-	<div class="grid-5">5</div><div class="grid-7">7</div>
-	<div class="grid-4">4</div><div class="grid-8">8</div>
-	<div class="grid-3">3</div><div class="grid-9">9</div>
-	<div class="grid-2">2</div><div class="grid-10">10</div>
-	<div class="grid-1">1</div><div class="grid-11">11</div>
-	<div class="grid-12">12</div>
+	<div class="grid-12">.grid-12</div>
+	<div class="grid-11">.grid-11</div><div class="grid-1">.grid-1</div>
+	<div class="grid-10">.grid-10</div><div class="grid-2">.grid-2</div>
+	<div class="grid-9">.grid-9</div><div class="grid-3">.grid-3</div>
+	<div class="grid-8">.grid-8</div><div class="grid-4">.grid-4</div>
+	<div class="grid-7">.grid-7</div><div class="grid-5">.grid-5</div>
+	<div class="grid-6">.grid-6</div><div class="grid-6">.grid-6</div>
+	<div class="grid-5">.grid-5</div><div class="grid-7">.grid-7</div>
+	<div class="grid-4">.grid-4</div><div class="grid-8">.grid-8</div>
+	<div class="grid-3">.grid-3</div><div class="grid-9">.grid-9</div>
+	<div class="grid-2">.grid-2</div><div class="grid-10">.grid-10</div>
+	<div class="grid-1">.grid-1</div><div class="grid-11">.grid-11</div>
+	<div class="grid-12">.grid-12</div>
 </div>
 
 <h3>960px 16-Column Fluid Grid with 20px Gutters</h3>
+<p>Uses descriptive naming convention for classes and leverages <code>@extend</code></p>
 <p><code class="code">@include generate-grid(16, 40, 20, grids-16)</code></p>
-<div class="grids-16 example">
-	<div class="grid-16">16</div>
-	<div class="grid-15">15</div><div class="grid-1">1</div>
-	<div class="grid-14">14</div><div class="grid-2">2</div>
-	<div class="grid-13">13</div><div class="grid-3">3</div>
-	<div class="grid-12">12</div><div class="grid-4">4</div>
-	<div class="grid-11">11</div><div class="grid-5">5</div>
-	<div class="grid-10">10</div><div class="grid-6">6</div>
-	<div class="grid-9">9</div><div class="grid-7">7</div>
-	<div class="grid-8">8</div><div class="grid-8">8</div>
-	<div class="grid-7">7</div><div class="grid-9">9</div>
-	<div class="grid-6">6</div><div class="grid-10">10</div>
-	<div class="grid-5">5</div><div class="grid-11">11</div>
-	<div class="grid-4">4</div><div class="grid-12">12</div>
-	<div class="grid-3">3</div><div class="grid-13">13</div>
-	<div class="grid-2">2</div><div class="grid-14">14</div>
-	<div class="grid-1">1</div><div class="grid-15">15</div>
-	<div class="grid-16">16</div>
+
+<div class="homepage example">
+	<div class="homepage-slideshow">.homepage-slideshow</div>
+	<section>
+		<article class="homepage-feature">.homepage-feature</article>
+		<article class="homepage-feature">.homepage-feature</article>
+		<article class="homepage-feature">.homepage-feature</article>
+	</section>
+	<section>
+		<aside class="homepage-feature-product-details">.homepage-feature-product-details</aside>
+		<div class="homepage-feature-products">
+			<p>.homepage-feature-products (with nested grid)</p>
+			<section>
+				<article class="homepage-feature-product">.homepage-feature-product</article>
+				<article class="homepage-feature-product">.homepage-feature-product</article>
+				<article class="homepage-feature-product">.homepage-feature-product</article>
+				<article class="homepage-feature-product">.homepage-feature-product</article>
+			</section>
+		</div>
+	</section>
+	<section>
+		<div class="homepage-latest-blog-post">.homepage-latest-blog-post</div>
+		<div class="homepage-latest-tweets">.homepage-latest-tweets</div>
+	</section>
 </div>
 
-<h3>1000px 6-Column Fluid Grid with 20px Gutters</h3>
-<p><code class="code">@include generate-grid(6, 150, 20, container)</code></p>
-<div class="container example">
-	<div class="grid-6">6</div>
-	<div class="grid-5">5</div><div class="grid-1">1</div>
-	<div class="grid-4">4</div><div class="grid-2">2</div>
-	<div class="grid-3">3</div><div class="grid-3">3</div>
-	<div class="grid-2">2</div><div class="grid-4">4</div>
-	<div class="grid-1">1</div><div class="grid-5">5</div>
-	<div class="grid-6">6</div>
-</div>
-
-<h3>480px 24-Column Fluid Grid with 5px Gutters</h3>
-<p><code class="code">@include generate-grid(24, 15, 5, grids-wrapper)</code></p>
-<div class="grids-wrapper example">
-	<div class="grid-24">24</div>
-	<div class="grid-23">23</div><div class="grid-1">1</div>
-	<div class="grid-22">22</div><div class="grid-2">2</div>
-	<div class="grid-21">21</div><div class="grid-3">3</div>
-	<div class="grid-20">20</div><div class="grid-4">4</div>
-	<div class="grid-19">19</div><div class="grid-5">5</div>
-	<div class="grid-18">18</div><div class="grid-6">6</div>
-	<div class="grid-17">17</div><div class="grid-7">7</div>
-	<div class="grid-16">16</div><div class="grid-8">8</div>
-	<div class="grid-15">15</div><div class="grid-9">9</div>
-	<div class="grid-14">14</div><div class="grid-10">10</div>
-	<div class="grid-13">13</div><div class="grid-11">11</div>
-	<div class="grid-12">12</div><div class="grid-12">12</div>
-	<div class="grid-24">24</div>
-</div>
 </body>
 </html>
