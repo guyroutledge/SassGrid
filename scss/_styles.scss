@@ -1,15 +1,77 @@
 // This is the code that calls the Grid Generator to output the grids on the examples page
 
-@include generate-grid(12, 60, 20);
-@include generate-grid(16, 40, 20, grids-16);
-@include generate-grid(6, 150, 20, container);
-@include generate-grid(24, 15, 5, grids-wrapper);
+// This example generates a 960 12-column grid
+// The wrapper class is a generic `.grids` and each column
+// is given a generic `.grid-` prefix.
 
-// Optionally you can set a max width on the grid container
-.grids { max-width:960px; }
-.grids-16 { max-width:960px; }
-.grid-container { max-width:1000px; }
-.grids-wrapper { max-width:480px; }
+@include generate-grid(12, 60, 20);
+.grids {
+	@extend %grids;
+	max-width:960px; // Optionally you can set a max width on the grid container
+
+	$total-columns: 12;
+	@for $i from 1 through $total-columns {
+		.grid-#{$i} {
+			@extend %grid-#{$i}-of-#{$total-columns};
+		}
+	}
+}
+
+@mixin vertically-center($height) {
+	height:$height;
+	line-height:$height;
+}
+// This example generates a 960 16-column grid
+// The example takes advantage of semantic naming that comes with using
+// silent placeholders in SASS.
+
+@include generate-grid(24, 30, 20, grids-24);
+.homepage {
+	@extend %grids-24;
+	max-width:960px;
+
+	// single, hero slideshow
+	.homepage-slideshow {
+		@extend %grid-24-of-24;
+		@include vertically-center(200px);
+	}
+
+	// 3 equal columns
+	.homepage-feature {
+		@extend %grid-8-of-24;
+		@include vertically-center(150px);
+	}
+
+	// 1 thrid / 2 thirds
+	.homepage-feature-product-details { @extend %grid-8-of-24; }
+	.homepage-feature-products {
+		@extend %grid-16-of-24;
+		height:310px;
+
+		p {
+			text-align:center;
+		}
+	}
+
+	// nested grid of products
+	.homepage-feature-products section { @extend %grids-24; }
+	.homepage-feature-product {
+		@extend %grid-12-of-24;
+		height:115px;
+		background:#fff;
+	}
+
+	.homepage-feature-product-details {
+		@include vertically-center(310px);
+	}
+
+	// 2 equal columns
+	.homepage-latest-blog-post,
+	.homepage-latest-tweets {
+		@extend %grid-12-of-24;
+		@include vertically-center(200px);
+	}
+}
 
 
 // The following styles are for examples page only
@@ -39,7 +101,8 @@ a {
 	}
 }
 
-[class^=grid-] {
+[class^=grid-],
+[class^=homepage-] {
 	min-height:30px;
 	margin-bottom:2.0083%!important;
 	background:#eee;
@@ -47,7 +110,6 @@ a {
 	line-height:30px;
 	outline:1px solid #ccc;
 }
-.grids { margin-bottom:1.5em; }
 .intro {
 	padding:1em 0;
 	background:none;
