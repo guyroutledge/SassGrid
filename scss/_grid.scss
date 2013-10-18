@@ -23,32 +23,29 @@
 		width:auto;
 		margin:0 0 0 (-1% * $_margin);
 		@extend %clearfix;
-
-		%_grid {
-			float:left;
-			margin:0 0 0 (1% * $_margin);
-		}
-		%_push-or-pull { position:relative; }
-
-		@for $i from 1 through $_cols {
-			$_grid-width:((($_width * $i) + ($_gutters * ($i - 1)))/$_total);
-			$_grid-margin-left:$_margin * 1%;
-
-			%grid-#{$i}-of-#{$_cols} {
-				@extend %_grid;
-				width: $_grid-width * 100%;
-			}
-
-			%push-#{$i}-of-#{$_cols} {
-				@extend %_push-or-pull;
-				left: (100% * $_grid-width) + $_grid-margin-left;
-			}
-			%pull-#{$i}-of-#{$_cols} {
-				@extend %_push-or-pull;
-				left: (-100% * $_grid-width) - $_grid-margin-left;
-			}
-		}
 	}
 
+	@for $i from 1 through $_cols {
+		$_grid-width:((($_width * $i) + ($_gutters * ($i - 1)))/$_total);
+		$_grid-margin-left:$_margin * 1%;
 
+		%grid-#{$i}-of-#{$_cols} {
+			float:left;
+			margin:0 0 0 (1% * $_margin);
+			width: $_grid-width * 100%;
+		}
+
+		%push-#{$i}-of-#{$_cols} {
+			position:relative;
+			left: (100% * $_grid-width) + $_grid-margin-left;
+		}
+		%pull-#{$i}-of-#{$_cols} {
+			position:relative;
+			left: (-100% * $_grid-width) - $_grid-margin-left;
+		}
+	}
 }
+
+// Sample Usage:
+// see the github repo at https://github.com/guyroutledge/CompassGrid
+@include generate-grid(12, 40, 20);
