@@ -1,12 +1,12 @@
-# Compass/SASS Fluid Grid Generator
+# SASS Fluid Grid Generator
 
 ## What is this?
 
-A fluid grid is a great starting point for building responsive websites but transforming pixels into percentages can sometimes be a bit of a head-scratcher. There are plenty of online grid generators but this is pure CSS and dynamic, thanks to the power of Compass/SASS mixins.
+A fluid grid is a great starting point for building responsive websites but transforming pixels into percentages can sometimes be a bit of a head-scratcher. There are plenty of online grid generators but this is pure CSS and dynamic, thanks to the power of Sass mixins.
 
 ## How does it work?
 
-Just add "scss/_grid.scss" to a Compass/SASS project, call the mixin, compile your stylesheet and you're done. You only need to write 1 line of code and Compass does all the magic for you:
+Just add "scss/_grid.scss" to a Compass/Sass project, call the mixin, compile your stylesheet and you're done. You only need to write 1 line of code and Sass does all the magic for you:
 
 	@include generate-grid($_cols, $_width, $_gutters, [$_grid_wrapper])
 
@@ -115,7 +115,7 @@ but you can modify your grid by pushing (moving right) and pulling
 
 ## Tell me more...
 
-Using some simple maths, compass generates your grid based on the arguments passed to the mixin. These arguments are as follows:
+Using some simple maths, Sass generates your grid based on the arguments passed to the mixin. These arguments are as follows:
 
 * `$_cols` number of columns
 * `$_width` width of each $col in pixels
@@ -130,11 +130,24 @@ You are probably familiar with the 960.gs grid which is traditionally a 12 or 16
 
 Browser support for the Fluid Grid is IE7+ and all modern browsers.
 
+## Where has it been used?
+
+* [Steve's Leaves](http://www.stevesleaves.co.uk)
+* [Abra-ca-debora](http://www.abra-ca-debora.co.uk)
+* [Ward Thomas](http://www.ward-thomas.co.uk)
+* [Kallo](http://www.kallo.com)
+* [Thomas J Fudges](http://www.thomasjfudges.co.uk)
+
 ### License
 
 Just use it. Fork it, change it, copy it, distribute it, give it some love.
 
 ### Changelog
+
+#### 18 Oct 2013
+
+* Reduce specificity
+* Reduce internal extends
 
 #### 11 Jun 2013
 
